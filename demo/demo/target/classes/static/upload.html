@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Image</title>
+</head>
+<body>
+    <h1>Upload Image</h1>
+    <form method="post" action="/images/upload" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <button type="submit">Upload</button>
+    </form>
+
+    <h1>View Image</h1>
+    <form method="get" action="/images/view">
+        <input type="text" name="id" placeholder="Enter Image ID" />
+        <button type="submit">View</button>
+    </form>
+
+    <div>
+        <img id="uploadedImage" style="width:100%">
+    </div>
+
+    <script>
+        const form = document.querySelector('form[action="/images/view"]');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const id = form.querySelector('input[name="id"]').value;
+            document.getElementById('uploadedImage').src = '/images/' + id;
+        });
+    </script>
+</body>
+</html>

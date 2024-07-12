@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Artículo</title>
+    <style>
+        /* Estilos CSS para la página */
+        .container-articulo {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .imagen {
+            width: 100%;
+            max-width: 600px; /* Ancho máximo para la imagen */
+            margin-bottom: 20px;
+        }
+        .imagen img {
+            width: 100%;
+            height: auto;
+        }
+        .titulo {
+            font-size: 24px;
+            text-align: center;
+        }
+        .fecha {
+            margin-top: 10px;
+            text-align: right;
+            font-style: italic;
+            color: #666;
+        }
+        .descripcion {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-articulo">
+        <div class="imagen">
+            <img id="imagenArticulo" src="#" alt="Imagen del artículo">
+        </div>
+        <div class="titulo" id="tituloArticulo">Cargando título...</div>
+        <div class="fecha" id="fechaArticulo">Cargando fecha...</div>
+        <div class="descripcion" id="descripcionArticulo">Cargando descripción...</div>
+    </div>
+
+    <script>
+        // Función para obtener los datos del artículo por su ID
+        function obtenerDatosArticulo() {
+            fetch('/publicaciones/last')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("tituloArticulo").textContent = data.titulo;
+                    document.getElementById("fechaArticulo").textContent = new Date(data.fecha).toLocaleDateString("es-ES", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric"
+                    });
+                    document.getElementById("descripcionArticulo").textContent = data.descripcion;
+
+                    // Cargar la imagen dinámicamente
+                    let imagenSrc = `data:image/png;base64, ${data.imagen.data}`; // Ajusta según la estructura de tus datos
+                    document.getElementById("imagenArticulo").setAttribute("src", imagenSrc);
+                })
+                .catch(error => {
+                    console.error('Error al obtener los datos del artículo:', error);
+                });
+        }
+
+        // Llamar a la función al cargar la página
+        window.onload = obtenerDatosArticulo;
+    </script>
+</body>
+</html>

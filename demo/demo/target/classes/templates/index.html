@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.container-imagesfour {
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+}
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+.container-funciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+    gap: 5%;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    color: black;
+    box-sizing: border-box; /* Para incluir el padding y el borde en el tamaño total del cuadro */
+}
+
+.container-izquierdaderecha{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+}
+.left-text {
+    align-self: flex-start;
+}
+
+.right-text {
+    align-self: flex-end;
+    font-weight: bold;
+    text-decoration: underline;
+    color: black;
+}
+
+.container-primerapublicacion{
+    max-width: 100%;
+    margin: 0 auto; 
+    padding: 20px; 
+}
+
+.publicacion {
+    display: flex; /* Utilizar flexbox para el diseño */
+    margin-bottom: 20px; /* Espacio entre cada publicación */
+}
+
+.imagen {
+    flex: 1; /* La imagen ocupa la mitad izquierda */
+}
+
+.imagen img {
+    width: 100%; /* Imagen ocupa todo el espacio disponible */
+    height: auto; /* Altura automática para mantener la proporción */
+}
+
+.contenido {
+    flex: 1; /* El contenido ocupa la mitad derecha */
+    padding: 0 20px; /* Espaciado interno dentro del contenido */
+}
+
+.contenido h2 {
+    font-size: 1.5rem; /* Tamaño del título */
+    margin-top: 0; /* Eliminar margen superior predeterminado */
+}
+
+.contenido p {
+    font-size: 1rem; /* Tamaño del texto del resumen */
+}
+
+.fecha {
+    margin-top: 20px; /* Espacio arriba de la fecha */
+    font-style: italic; /* Estilo de letra itálica */
+}
+
+.boton {
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Color del texto blanco */
+    padding: 10px 20px; /* Espacio interno del botón */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cursor de puntero al pasar por encima */
+    float: right; /* Botón a la derecha */
+}
+
+.container-treearticles {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.image-box {
+    text-align: center;
+    flex-basis: 30%;
+}
+.image-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+.events-container {
+    display: flex;
+}
+
+.events-list {
+    width: 50%;
+    padding: 20px;
+}
+
+.event {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.event-date {
+    width: 50px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.day {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.month {
+    font-size: 16px;
+}
+
+.event-details {
+    flex: 1;
+}
+
+.event-title {
+    margin: 0;
+    font-size: 18px;
+}
+
+.download-link {
+    font-size: 14px;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.event-details-container {
+    width: 50%;
+    padding: 20px;
+    text-align: center;
+}
+
+#event-image {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 20px;
+}
+
+
+</style>
+<script src="http://localhost:35729/livereload.js"></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#opcion1" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Opcion uno</a>
+    <a href="#opcion2" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Opcion dos</a>
+    <a href="#opcion3" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Opcion tres</a>
+    <a href="#opcion4" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Opcion cuatro</a>
+    <a href="#opcion5" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Opcion cinco</a>
+    <a href="#opcion6" class="w3-padding-large w3-button w3-right" >Opcion seis </a>
+  </div>
+</div>
+
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="#band" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">BAND</a>
+  <a href="#tour" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">TOUR</a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
+  <a href="#" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">MERCH</a>
+</div>
+
+<div class="w3-display-container w3-center">
+    <img th:src="@{'/imagesPosgre/5'}" style="width:100%;height:40%;" alt="Logo de la empresa">
+</div>
+<div class="w3-content" style="width:80% ;margin-top:46px">
+
+<div class="container-imagesfour">
+    <img src="/imagesPosgre/4" style="width:20%;margin-left: 5%;margin-right: 5%">
+    <img src="/imagesPosgre/4" style="width:20%;margin-left: 5%;margin-right: 5%">
+    <img src="/imagesPosgre/4" style="width:20%;margin-left: 5%;margin-right: 5%">
+    <img src="/imagesPosgre/4" style="width:20%;margin-left: 5%;margin-right: 5%">
+</div>
+
+<h2 class="w3-wide">Funciones</h2>
+<div class="container-funciones">
+    <div class="box" style="background-color: #82eff7">
+        <b>Subtítulo</b>
+        <p>Descripción</p>
+    </div>
+    <div class="box" style="background-color: #33ffb1">
+        <b>Subtítulo</b>
+        <p>Descripción</p>
+    </div>
+    <div class="box" style="background-color: #3485ff">
+        <b>Subtítulo</b>
+        <p>Descripción</p>
+    </div>
+    <div class="box" style="background-color: #e6ff8a">
+        <b>Subtítulo</b>
+        <p>Descripción</p>
+    </div>
+</div>
+<div class="container-izquierdaderecha">
+    <span class="w3-wide left-text"><h2>Publicaciones</h2></span>
+    <a href="#" class= "right-text">Ver todo</a>
+</div>
+<div class="container-primerapublicacion">
+    <div class="publicacion">
+        <div class="imagen">
+            <img id='imagenPublicacion' src="#" alt="Imagen de la publicación">
+        </div>
+        <div class="contenido">
+            <h2 id="titulolast">Cargando título...</h2>
+            <p id="resumenlast">Cargando resumen...</p>
+            <div class="fecha" id="fechalast">Cargando fecha...</div>
+            <a href="articulo.html" class="boton">Leer Artículo</a>
+        </div>
+    </div>
+</div>
+<div class="container-treearticles">
+    <div class="image-box">
+        <img id="imagenArticle1" src="#" alt="Imagen 1">
+        <p id="tituloArticle1">Cargando título...</p>
+        <div class="fecha" id="fechaArticle1">Cargando fecha...</div>
+    </div>
+    <div class="image-box">
+        <img id="imagenArticle2" src="#" alt="Imagen 2">
+        <p id="tituloArticle2">Cargando título...</p>
+        <div class="fecha" id="fechaArticle2">Cargando fecha...</div>
+    </div>
+    <div class="image-box">
+        <img id="imagenArticle3" src="#" alt="Imagen 3">
+        <p id="tituloArticle3">Cargando título...</p>
+        <div class="fecha" id="fechaArticle3">Cargando fecha...</div>
+    </div>
+</div>
+<h2 class="w3-wide">Calendario</h2>
+<div class="events-container">
+    <div class="events-list">
+        <!-- Lista de eventos -->
+        <div class="event" data-index="0">
+            <div class="event-date">
+                <div class="day1">10</div>
+                <div class="month1">Jul</div>
+            </div>
+            <div class="event-details">
+                <h3 class="event-title1">Cargando Evento...</h3>
+                <a href="#" class="download-link1">Descargar archivos</a>
+            </div>
+        </div>
+        <div class="event" data-index="1">
+            <div class="event-date">
+                <div class="day2">15</div>
+                <div class="month2">Ago</div>
+            </div>
+            <div class="event-details">
+                <h3 class="event-title2">Cargando Evento...</h3>
+                <a href="#" class="download-link2">Descargar archivos</a>
+            </div>
+        </div>
+        <div class="event" data-index="2">
+            <div class="event-date">
+                <div class="day3">20</div>
+                <div class="month3">Sep</div>
+            </div>
+            <div class="event-details">
+                <h3 class="event-title3">Cargando Evento...</h3>
+                <a href="#" class="download-link3">Descargar archivos</a>
+            </div>
+        </div>
+        <div class="event" data-index="3">
+            <div class="event-date">
+                <div class="day4">25</div>
+                <div class="month4">Oct</div>
+            </div>
+            <div class="event-details">
+                <h3 class="event-title4">Cargando Evento...</h3>
+                <a href="#" class="download-link4">Descargar archivos</a>
+            </div>
+        </div>
+    </div>
+    <div class="event-details-container">
+        <img id="event-image" src="#" alt="Imagen del evento">
+        <h2 id="event-title">Evento 1</h2>
+        <p id="event-location">Ubicación del evento 1</p>
+    </div>
+</div>
+
+ 
+ 
+</div>
+
+
+<script>
+
+    fetch('/publicaciones/last')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("titulolast").textContent = data.titulo;
+                document.getElementById("resumenlast").textContent = data.resumen;
+                document.getElementById("fechalast").textContent = new Date(data.fecha).toLocaleDateString("es-ES", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                });
+                let imagenSrc = `data:image/png;base64, ${data.imagen.data}`;
+                document.getElementById("imagenPublicacion").setAttribute("src", imagenSrc);
+            })
+            .catch(error => {
+                console.error('Error al obtener la última publicación:', error);
+            });
+
+        fetch('/publicaciones/penultimas-publicaciones')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.length !== 3) {
+                    throw new Error("Se esperaban 3 publicaciones, pero se recibieron " + data.length);
+                }
+
+                let i = 1;
+                data.forEach((publicacion) => {
+                    let imagenSrc = `data:image/png;base64,${publicacion.imagen.data}`;
+                    document.getElementById("imagenArticle" + i).setAttribute("src", imagenSrc);
+                    document.getElementById("tituloArticle" + i).textContent = publicacion.titulo;
+                    document.getElementById("fechaArticle" + i).textContent = new Date(publicacion.fecha).toLocaleDateString("es-ES", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                });
+                    i++;
+                });
+            })
+            .catch(error => console.error('Error al obtener las publicaciones:', error));
+
+
+    function updateEventDetails(evento) {
+        let imagenSrc = `data:image/png;base64,${evento.imagen.data}`;
+        document.getElementById('event-image').setAttribute("src", imagenSrc);
+        document.getElementById('event-title').textContent = evento.titulo;
+        document.getElementById('event-location').textContent = evento.location;
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const eventImage = document.getElementById('event-image');
+    const eventTitle = document.getElementById('event-title');
+    const eventLocation = document.getElementById('event-location');
+
+    function updateEventDetails(evento) {
+        let imagenSrc = `data:image/png;base64,${evento.imagen.data}`;
+        eventImage.src = imagenSrc;
+        eventImage.alt = evento.titulo;
+        eventTitle.textContent = evento.titulo;
+        eventLocation.textContent = `Ubicación: ${evento.location}`;
+
+    }
+
+    fetch('/events/nearevents')
+        .then(response => response.json())
+        .then(eventos => {
+            const eventElements = document.querySelectorAll('.event');
+
+            eventElements.forEach((element, index) => {
+                const eventIndex = index + 1;
+                const eventTitleElement = element.querySelector(`.event-title${eventIndex}`);
+                const eventDownloadLinkElement = element.querySelector(`.download-link${eventIndex}`);
+                const evento = eventos[index];
+
+                eventTitleElement.textContent = evento.titulo;
+                eventDownloadLinkElement.href = evento.archivopdf;
+
+                const eventDate = new Date(evento.fecha);
+                const dayElement = document.querySelector(`.day${eventIndex}`);
+                const monthElement = document.querySelector(`.month${eventIndex}`);
+
+                dayElement.textContent = eventDate.getDate();
+                monthElement.textContent = getMonthName(eventDate.getMonth());
+
+                element.addEventListener('click', () => {
+                    updateEventDetails(evento);
+                });
+            });
+
+            if (eventos.length > 0) {
+                updateEventDetails(eventos[0]);
+            }
+        })
+        .catch(error => console.error('Error al obtener eventos:', error));
+
+    function getMonthName(monthIndex) {
+        const months = [
+            'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+            'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'
+        ];
+        return months[monthIndex];
+    }
+});
+
+              
+
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
